@@ -1,6 +1,8 @@
-import React from 'react'
+import React ,{useState} from 'react'
 
 const Login = () => {
+  const [email,setEmail]=useState('')
+  const [password,setPassword]=useState('')
   const handleSubmit=async(e)=>{
     e.preventDefault();
   }
@@ -13,11 +15,16 @@ const Login = () => {
             <p className='font-light '>Enter your credentials to access the admin panel</p>
           </div>
 
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} className='mt-6 w-full text-gray-600 sm:max-w-md'>
             <div className='flex flex-col'>
               <label>Email</label>
-              <input type='email' required placeholder="Enter your email" className="border-b-2 border-gray-300 p-2 outline-none mb-6" />
+              <input onChange={e=>setEmail(e.target.value)} value={email} type='email' required placeholder="Enter your email" className="border-b-2 border-gray-300 p-2 outline-none mb-6" />
             </div>
+            <div className='flex flex-col'>
+              <label>Password</label>
+              <input onChange={e=>setPassword(e.target.value)} value={password} type='password' required placeholder="Your password" className="border-b-2 border-gray-300 p-2 outline-none mb-6" />
+            </div>
+            <button type='submit' className="w-full py-3 font-medium bg-primary text-white cursor-pointer rounded hover:bg-primary/90 transition-all">Login</button>
           </form>
 
         </div>
